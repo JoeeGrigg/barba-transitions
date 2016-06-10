@@ -1,6 +1,6 @@
 {
   "name": "barba-transitions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An addon to BarbaJS which makes it really easy to use css transitions for page transitions.",
   "main": "barba.transitions.js",
   "directories": {
