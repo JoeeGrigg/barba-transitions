@@ -5,7 +5,8 @@ var Transition = Barba.BaseTransition.extend({
 
   runTransition: function() {
 
-    $(this.newContainer).css('position', 'absolute');
+    $('body').css('overflow', 'hidden');
+
     ////////////////////////////
     // Setup
     ////////////////////////////
@@ -48,7 +49,7 @@ var Transition = Barba.BaseTransition.extend({
     function done(x) {
 
       // Remove old container and add new one
-      $(x.newContainer).css('position', 'relative');
+      $('body').css('overflow', 'visible');
       x.oldContainer.style.visibility = 'hidden';
       x.newContainer.style.visibility = 'visible';
 
