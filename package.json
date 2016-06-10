@@ -1,0 +1,40 @@
+{
+  "name": "barba-transitions",
+  "version": "1.0.0",
+  "description": "An addon to BarbaJS which makes it really easy to use css transitions for page transitions.",
+  "main": "barba.transitions.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "postinstall": "gulp install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeeGrigg/barba-transitions.git"
+  },
+  "keywords": [
+    "Barba",
+    "Transition"
+  ],
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sequence": "^0.4.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "jshint": "^2.9.2"
+  },
+  "author": "Joe Grigg <joe@joegrigg.com> (https://github.com/JoeeGrigg)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoeeGrigg/barba-transitions/issues"
+  },
+  "homepage": "https://github.com/JoeeGrigg/barba-transitions#readme"
+}

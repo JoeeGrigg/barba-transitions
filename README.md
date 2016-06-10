@@ -6,11 +6,18 @@ This is an extension to [Barba](http://barbajs.org/).
 It adds a custom transition which makes it really easy to make elements transition
 on and off the page.
 
+# Installation
+
+You should install this package via NPM.
+
+```
+npm install barba-transitions
+```
+
 # Getting started
 
 To get started all you need to do is include Barba, a selector library such as
-[Jquery](https://github.com/jquery/jquery) or [Cash](https://github.com/kenwheeler/cash),
-I would suggest Cash as it is really light weight, and this library on your page.
+[Jquery](https://github.com/jquery/jquery).
 
 From there, you initialise Barba as you normally would and the transitions will
 automatically kick in.

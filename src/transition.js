@@ -5,9 +5,11 @@ var Transition = Barba.BaseTransition.extend({
 
   runTransition: function() {
 
+    $(this.newContainer).css('position', 'absolute');
     ////////////////////////////
     // Setup
     ////////////////////////////
+    var transitionLength
     if (Barba.transitionLength == undefined) { transitionLength = 500; }
     else { transitionLength = parseInt(Barba.transitionLength)}
     var transitionTimeout = 50,
@@ -16,7 +18,7 @@ var Transition = Barba.BaseTransition.extend({
     ////////////////////////////
     
     // Set the animation time on all elements
-    allAnimationElements = $('[' + transitionSelector + ']');
+    var allAnimationElements = $('[' + transitionSelector + ']');
     $.each(allAnimationElements, function() {
       $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds);
     })
@@ -36,7 +38,7 @@ var Transition = Barba.BaseTransition.extend({
 
     // Trigger transitions
     setTimeout(function(){
-      for (i = 0; i < transitions.length; i++) {
+      for (var i = 0; i < transitions.length; i++) {
         var el = transitions[i];
         el['element'].attr('data-transition', el['transition']);
       }
@@ -46,6 +48,7 @@ var Transition = Barba.BaseTransition.extend({
     function done(x) {
 
       // Remove old container and add new one
+      $(x.newContainer).css('position', 'relative');
       x.oldContainer.style.visibility = 'hidden';
       x.newContainer.style.visibility = 'visible';
 
@@ -63,7 +66,3 @@ var Transition = Barba.BaseTransition.extend({
 
   }
 });
-
-Barba.Pjax.getTransition = function() {
-  return Transition;
-};
