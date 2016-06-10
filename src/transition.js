@@ -49,9 +49,11 @@ var Transition = Barba.BaseTransition.extend({
     function done(x) {
 
       // Remove old container and add new one
-      $('body').css('overflow', 'visible');
       x.oldContainer.style.visibility = 'hidden';
       x.newContainer.style.visibility = 'visible';
+      setTimeout(function(){
+        $('body').css('overflow', 'visible');
+      }, transitionLength);
 
       // Scroll to top
       document.body.scrollTop = 0;
