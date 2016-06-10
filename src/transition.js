@@ -1,3 +1,7 @@
+// Define barba properties
+Barba.transitionLength = 500;
+
+// Define transition
 var Transition = Barba.BaseTransition.extend({
   start: function() {
     this.newContainerLoading.then(this.runTransition.bind(this));
@@ -10,10 +14,8 @@ var Transition = Barba.BaseTransition.extend({
     ////////////////////////////
     // Setup
     ////////////////////////////
-    var transitionLength
-    if (Barba.transitionLength == undefined) { transitionLength = 500; }
-    else { transitionLength = parseInt(Barba.transitionLength)}
-    var transitionTimeout = 50,
+    var transitionLength = parseInt(Barba.transitionLength),
+        transitionTimeout = 50,
         transitionLengthSeconds = (transitionLength / 1000) + 's',
         transitionSelector = 'data-transition'; 
     ////////////////////////////
@@ -24,7 +26,7 @@ var Transition = Barba.BaseTransition.extend({
       $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds);
     })
 
-    // Get all elements with transitions
+    // Get all old elements with transitions
     var cashEl = $(this.oldContainer),
         allTransitions = cashEl.find('[' + transitionSelector + ']'),
         transitions = [];
@@ -41,7 +43,7 @@ var Transition = Barba.BaseTransition.extend({
     setTimeout(function(){
       for (var i = 0; i < transitions.length; i++) {
         var el = transitions[i];
-        el['element'].attr('data-transition', el['transition']);
+        el['element'].attr(transitionSelector, el['transition']);
       }
     }, transitionTimeout);
 
