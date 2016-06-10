@@ -6,6 +6,11 @@ This is an extension to [Barba](http://barbajs.org/).
 It adds a custom transition which makes it really easy to make elements transition
 on and off the page.
 
+# Dependencies
+
+* Barba
+* Jquery
+
 # Installation
 
 You should install this package via NPM.
@@ -16,13 +21,9 @@ npm install barba-transitions
 
 # Getting started
 
-To get started all you need to do is include Barba, a selector library such as
-[Jquery](https://github.com/jquery/jquery).
+Initialise Barba as you normally would and the transitions will automatically kick in.
 
-From there, you initialise Barba as you normally would and the transitions will
-automatically kick in.
-
-Lastly, define your css transitions in your stylesheet and pass that name as the value of
+Then, define your css transitions in your stylesheet and pass that name as the value of
 the ```data-transition``` attribute on each element that you wish to animate.
 
 ## Example
@@ -48,7 +49,7 @@ the ```data-transition``` attribute on each element that you wish to animate.
     </div>
   </div>
 
-  <script src="cash.min.js" type="text/javascript"></script>
+  <script src="jquery.min.js" type="text/javascript"></script>
   <script src="barba.min.js" type="text/javascript"></script>
   <script src="barba.transitions.min.js" type="text/javascript"></script>
   <script src="main.js" type="text/javascript"></script>
