@@ -19,11 +19,13 @@ var gulp            = require('gulp'),
 // JS
 //
 
+src = [
+  './src/transition.js',
+  './src/transition-init.js'
+];
+
 gulp.task('js', function(){
-  return gulp.src([
-      './src/transition.js',
-      './src/transition-init.js'
-    ])
+  return gulp.src(src)
     .pipe(plumber(plumberErrorHandler))
     .pipe(sourcemaps.init())
     .pipe(concat('barba.transitions.js'))
@@ -31,6 +33,16 @@ gulp.task('js', function(){
     .pipe(concat('barba.transitions.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist'))
+    .pipe(sourcemaps.write('.'));
+});
+
+gulp.task('js-dev', function(){
+  return gulp.src(src)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sourcemaps.init())
+    .pipe(concat('barba.transitions.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./example/temp'))
     .pipe(sourcemaps.write('.'));
 });
 
@@ -58,5 +70,5 @@ var plumberErrorHandler = { errorHandler: notify.onError({
 // Build Tasks
 //
 
-gulp.task('default', sequence(['js', 'watch']));
+gulp.task('default', sequence(['js-dev', 'watch']));
 gulp.task('install', sequence(['js']));
