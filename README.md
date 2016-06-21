@@ -43,7 +43,7 @@ the ```data-transition``` attribute on each element that you wish to animate.
   </header>
   <div id="barba-wrapper">
     <div class="barba-container">
-      <section class="all-posts" data-transition="fadein">
+      <section class="all-posts" data-transition="fadeIn">
         This is the main page content
       </section>
     </div>
@@ -63,10 +63,6 @@ the ```data-transition``` attribute on each element that you wish to animate.
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
-}
-
-[data-transition=fadein] {
-  animation-name: fadeIn;
 }
 ```
 

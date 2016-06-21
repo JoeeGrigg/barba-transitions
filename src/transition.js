@@ -15,7 +15,7 @@ var Transition = Barba.BaseTransition.extend({
     // Setup
     ////////////////////////////
     var transitionLength = parseInt(Barba.transitionLength),
-        transitionTimeout = 50,
+        transitionTimeout = 100,
         transitionLengthSeconds = (transitionLength / 1000) + 's',
         transitionSelector = 'data-transition'; 
     ////////////////////////////
@@ -23,28 +23,20 @@ var Transition = Barba.BaseTransition.extend({
     // Set the animation time on all elements
     var allAnimationElements = $('[' + transitionSelector + ']');
     $.each(allAnimationElements, function() {
-      $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds);
+      $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds).css('animation-name', $(this).data('transition')).css('animation-fill-mode', 'forwards');
     })
 
     // Get all old elements with transitions
-    var cashEl = $(this.oldContainer),
-        allTransitions = cashEl.find('[' + transitionSelector + ']'),
-        transitions = [];
-
-    $.each(allTransitions, function() {
-      x = {};
-      x['transition'] = $(this).attr(transitionSelector);
-      $(this).removeAttr(transitionSelector).css('animation-direction', 'alternate-reverse').css('animation-delay', '0s');
-      x['element'] = $(this);
-      transitions.push(x);
+    var oldElements = $(this.oldContainer).find('[' + transitionSelector + ']');
+    $.each(oldElements, function() {
+      $(this).removeAttr('style');
     });
 
-    // Trigger transitions
+    // Trigger out transitions
     setTimeout(function(){
-      for (var i = 0; i < transitions.length; i++) {
-        var el = transitions[i];
-        el['element'].attr(transitionSelector, el['transition']);
-      }
+      $.each(oldElements, function() {
+        $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds).css('animation-name', $(this).data('transition')).css('animation-direction', 'alternate-reverse').css('animation-delay', '0s').css('animation-fill-mode', 'forwards');
+      });
     }, transitionTimeout);
 
     var x = this;
@@ -55,6 +47,9 @@ var Transition = Barba.BaseTransition.extend({
       x.newContainer.style.visibility = 'visible';
       setTimeout(function(){
         $('body').css('overflow', 'visible');
+        $.each(allAnimationElements, function() {
+          $(this).removeAttr('style');
+        });
       }, transitionLength);
 
       // Scroll to top

@@ -47,15 +47,3 @@ section.sidebar {
   0% {opacity: 0; transform: translate3d(-100%, 0, 0);}
   100% {opacity: 1; transform: none;}
 }
-
-[data-transition=fadein] {
-  animation-name: fadeIn;
-}
-
-[data-transition=fadeinup] {
-  animation-name: fadeInUp;
-}
-
-[data-transition=slideinright] {
-  animation-name: slideInRight;
-}
