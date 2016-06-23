@@ -9,7 +9,7 @@ var Transition = Barba.BaseTransition.extend({
 
   runTransition: function() {
 
-    $('body').css('overflow', 'hidden');
+    document.body.style.overflow = 'hidden';
 
     ////////////////////////////
     // Setup
@@ -21,22 +21,40 @@ var Transition = Barba.BaseTransition.extend({
     ////////////////////////////
     
     // Set the animation time on all elements
-    var allAnimationElements = $('[' + transitionSelector + ']');
-    $.each(allAnimationElements, function() {
-      $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds).css('animation-name', $(this).data('transition')).css('animation-fill-mode', 'forwards');
-    })
+    var allAnimationElements = document.querySelectorAll('[' + transitionSelector + ']');
+    for (var i = 0; i < allAnimationElements.length; i++) {
+      element = allAnimationElements[i];
+
+      // Set styles
+      element.style.animationDuration = transitionLengthSeconds;
+      element.style.animationDelay = transitionLengthSeconds;
+      element.style.animationName = element.dataset.transition;
+      element.style.animationFillMode = 'forwards';
+    }
 
     // Get all old elements with transitions
-    var oldElements = $(this.oldContainer).find('[' + transitionSelector + ']');
-    $.each(oldElements, function() {
-      $(this).removeAttr('style');
-    });
+    var oldElements = this.oldContainer.querySelectorAll('[' + transitionSelector + ']');
+    for (var i = 0; i < oldElements.length; i++) {
+      element = oldElements[i];
 
+      // Remove style tag
+      element.removeAttribute('style');
+    }
+    
     // Trigger out transitions
     setTimeout(function(){
-      $.each(oldElements, function() {
-        $(this).css('animation-duration', transitionLengthSeconds).css('animation-delay', transitionLengthSeconds).css('animation-name', $(this).data('transition')).css('animation-direction', 'alternate-reverse').css('animation-delay', '0s').css('animation-fill-mode', 'forwards');
-      });
+
+      for (var i = 0; i < oldElements.length; i++) {
+        element = oldElements[i];
+
+        // Set styles
+        element.style.animationDuration = transitionLengthSeconds;
+        element.style.animationDelay = '0s';
+        element.style.animationName = element.dataset.transition;
+        element.style.animationFillMode = 'forwards';
+        element.style.animationDirection = 'alternate-reverse';
+      }
+
     }, transitionTimeout);
 
     var x = this;
@@ -45,11 +63,14 @@ var Transition = Barba.BaseTransition.extend({
       // Remove old container and add new one
       x.oldContainer.style.visibility = 'hidden';
       x.newContainer.style.visibility = 'visible';
+
+      // Remove style tag at the end of the animation
       setTimeout(function(){
-        $('body').css('overflow', 'visible');
-        $.each(allAnimationElements, function() {
-          $(this).removeAttr('style');
-        });
+        document.body.style.overflow = 'visible';
+        for (var i = 0; i < allAnimationElements.length; i++) {
+          element = allAnimationElements[i];
+          element.removeAttribute('style');
+        }
       }, transitionLength);
 
       // Scroll to top
@@ -60,6 +81,7 @@ var Transition = Barba.BaseTransition.extend({
 
     }
 
+    // Mark as done
     setTimeout(function(){
       done(x);
     }, transitionLength + transitionTimeout);
