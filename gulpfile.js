@@ -71,4 +71,4 @@ var plumberErrorHandler = { errorHandler: notify.onError({
 //
 
 gulp.task('default', sequence(['js-dev', 'watch']));
-gulp.task('install', sequence(['js']));
+gulp.task('install', ['js']);
