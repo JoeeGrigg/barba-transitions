@@ -23,7 +23,7 @@ var Transition = Barba.BaseTransition.extend({
     // Set the animation time on all elements
     var allAnimationElements = document.querySelectorAll('[' + transitionSelector + ']');
     for (var i = 0; i < allAnimationElements.length; i++) {
-      element = allAnimationElements[i];
+      var element = allAnimationElements[i];
 
       // Set styles
       element.style.animationDuration = transitionLengthSeconds;
@@ -45,7 +45,7 @@ var Transition = Barba.BaseTransition.extend({
     setTimeout(function(){
 
       for (var i = 0; i < oldElements.length; i++) {
-        element = oldElements[i];
+        var element = oldElements[i];
 
         // Set styles
         element.style.animationDuration = transitionLengthSeconds;
@@ -68,7 +68,7 @@ var Transition = Barba.BaseTransition.extend({
       setTimeout(function(){
         document.body.style.overflow = 'visible';
         for (var i = 0; i < allAnimationElements.length; i++) {
-          element = allAnimationElements[i];
+          var element = allAnimationElements[i];
           element.removeAttribute('style');
         }
       }, transitionLength);
