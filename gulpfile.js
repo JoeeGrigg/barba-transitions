@@ -30,6 +30,7 @@ gulp.task('js', function(){
     .pipe(sourcemaps.init())
     .pipe(concat('barba.transitions.js'))
     .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./example/temp'))
     .pipe(concat('barba.transitions.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist'))
@@ -71,4 +72,4 @@ var plumberErrorHandler = { errorHandler: notify.onError({
 //
 
 gulp.task('default', sequence(['js-dev', 'watch']));
-gulp.task('install', sequence(['js']));
+gulp.task('install', ['js']);
