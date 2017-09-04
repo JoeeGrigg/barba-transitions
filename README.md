@@ -1,28 +1,26 @@
 Barba Transitions
 =================
 
-This is an extension to [Barba](http://barbajs.org/).
+This is an extension to [Barba.js](http://barbajs.org/).
 
-It adds a custom transition which makes it really easy to make elements transition
-on and off the page.
-
-# Dependencies
-
-* Barba
+With `barba-transitions` it's really easy to add CSS animations to any given element during Barba's page transitions.
 
 # Installation
 
-You should install this package via NPM.
-
+You can install it using [NPM](https://npmjs.org/) (requires [Node.js](http://nodejs.org/))
 ```
-npm install barba-transitions
+npm install barba-transitions --save
+```
+or just including the script in your page:
+```html
+<script src="barba.transitions.min.js" type="text/javascript"></script>
 ```
 
 # Getting started
 
-Initialise Barba as you normally would and the transitions will automatically kick in.
+Initialise Barba.js as you normally would and the transitions will automatically kick in.
 
-Then, define your css transitions in your stylesheet and pass that name as the value of
+Simply define your CSS transitions in your stylesheet and pass its name as the value of
 the ```data-transition``` attribute on each element that you wish to animate.
 
 ## Example
@@ -71,18 +69,17 @@ window.onload = function() {
   Barba.Pjax.start();
 }
 ```
+You can find another example [here](https://github.com/JoeeGrigg/barba-transitions/tree/master/example)).
 
 # Setting a custom transition time
 
-To change the transition length it couldn't be simpler.
+Changing the transition length couldn't be simpler:
 
-Define ```Barba.transitionLength``` in miliseconds in your JS, after Barba
-is initialised and all transitions will use the newly defined time.
+In your javascript, just define ```Barba.transitionLength``` in miliseconds after `Barba.Pjax.start()` and all transitions will use the newly defined time.
 
 ## Example
 
 ```
 Barba.transitionLength = 1000;
 ```
-
 This would set the transition length to be 1 second.
