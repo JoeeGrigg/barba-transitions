@@ -11,8 +11,6 @@ var gulp            = require('gulp'),
     sequence        = require('gulp-sequence'),
     sourcemaps      = require('gulp-sourcemaps'),
     uglify          = require('gulp-uglify'),
-    fs              = require('fs'),
-    path            = require('path'),
     rename          = require('gulp-rename');
 
 //
@@ -30,9 +28,8 @@ gulp.task('js', function(){
     .pipe(sourcemaps.init())
     .pipe(concat('barba.transitions.js'))
     .pipe(gulp.dest('./dist'))
-    .pipe(gulp.dest('./example/temp'))
-    .pipe(concat('barba.transitions.min.js'))
     .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./dist'))
     .pipe(sourcemaps.write('.'));
 });
@@ -41,7 +38,7 @@ gulp.task('js-dev', function(){
   return gulp.src(src)
     .pipe(plumber(plumberErrorHandler))
     .pipe(sourcemaps.init())
-    .pipe(concat('barba.transitions.min.js'))
+    .pipe(concat('barba.transitions.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./example/temp'))
     .pipe(sourcemaps.write('.'));
@@ -52,9 +49,7 @@ gulp.task('js-dev', function(){
 //
 
 gulp.task('watch', function() {
-
   gulp.watch('src/**/*.js', ['js-dev']);
-
 });
 
 //
