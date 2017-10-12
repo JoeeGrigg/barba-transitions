@@ -1,14 +1,8 @@
 {
   "name": "barba-transitions",
   "version": "1.1.0",
-  "description": "An addon to BarbaJS which makes it really easy to use css transitions for page transitions.",
-  "main": "barba.transitions.js",
-  "directories": {
-    "example": "example"
-  },
-  "scripts": {
-    "postinstall": "gulp install"
-  },
+  "description": "An addon to Barba.js which makes it really easy to add CSS animations to elements during page transitions.",
+  "main": "dist/barba.transitions.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JoeeGrigg/barba-transitions.git"
