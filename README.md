@@ -1,3 +1,19 @@
+# Deprecation Notice
+
+This project is now deprecated.
+
+Recently Barba v2 was released which has all of the features I added to v1, plus many more, and is maintained.
+
+This project will no longer (not that I had been anyway) be maintained.
+
+Barba can be found [here](https://github.com/barbajs/barba)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 Barba Transitions
 =================
 
